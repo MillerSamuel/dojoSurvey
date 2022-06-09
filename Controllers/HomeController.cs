@@ -26,7 +26,6 @@ namespace DojoSurvey.Controllers;
         [HttpGet("result")]
         public ViewResult Result(User newUser)
         {
-            ViewBag.User=newUser;
-            return View("Result");
+            return View(newUser);
         }
     }
