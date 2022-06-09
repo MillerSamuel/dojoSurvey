@@ -1,22 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
+using DojoSurvey.Models;
 namespace DojoSurvey.Controllers;     
     public class HomeController : Controller
     {
-        //for each route this controller is to handle:
-        [HttpGet("")]       //type of request
+        [HttpGet("")]
         public ViewResult Index()
         {
             return View("index");
         }
 
 
-        [HttpPost("result")]
-        public IActionResult Result(string Name, string Location, string Fav, string Comment)
+        [HttpPost("process")]
+        public IActionResult Process(User newUser)
         {
-            ViewBag.Name=Name;
-            ViewBag.Location=Location;
-            ViewBag.Fav=Fav;
-            ViewBag.Comment=Comment;
+            if(ModelState.IsValid)
+            {
+            return RedirectToAction("result",newUser);
+            }
+            else
+            {
+                return View("index");
+            }
+        }
+
+        [HttpGet("result")]
+        public ViewResult Result(User newUser)
+        {
+            ViewBag.User=newUser;
             return View("Result");
         }
     }

@@ -7,31 +7,37 @@
     <title>Document</title>
 </head>
 <body>
+    @model User
     <h1>Dojo Survey</h1>
-    <form action="result" method="post">
+    <form action="process" method="post">
         <div>
             <label for="Name">Name:</label>
-            <input type="text" name="Name">
+            <input asp-for="Name">
+            <span asp-validation-for="Name"></span>
         </div>
         <div>
             <label for="Location">Location:</label>
-            <select name="Location">
+            <select asp-for="Location">
                 <option value="San jose">San Jose</option>
                 <option value="Online">Online</option>
-                <option value="Moon">Moon</option>
+                <option value="Chicago">Chicago</option>
             </select>
+            <span asp-validation-for="Location"></span>
+
         </div>
         <dvi>
             <label for="Fav">Favorite Language:</label>
-            <select name="Fav">
+            <select asp-for="Fav">
                 <option value="C#">C#</option>
                 <option value="Python">Python</option>
                 <option value="React">React</option>
             </select>
+            <span asp-validation-for="Fav"></span>
+
         </dvi>
         <div>
             <label for="Comment">Comments:</label>
-            <textarea name="Comment" cols="20" rows="3"></textarea>
+            <textarea asp-for="Comment" cols="20" rows="3"></textarea>
         </div>
         <input type="submit" value="Submit Form">
     </form>
